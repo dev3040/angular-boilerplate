@@ -1,0 +1,45 @@
+@import '../../styles.scss';
+
+.navigation-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.toolbar{
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+.mat-toolbar.mat-primary {
+    background: $primary-color;
+    color: #ffffff;
+
+    .nav-tool-items{
+        float: right;
+        position: relative;
+        margin-left: auto;
+        margin-top: 10px;
+    }
+
+    .icon .material-icons{
+        font-size: 2rem;
+    }
+}
+
+.sidenav-container {
+    flex: 1;
+
+    & > mat-sidenav{
+        background-color: $secondary-color;
+        min-width: 13rem;
+    }
+
+    .list > a{
+        color: $font-color;
+    }
+}

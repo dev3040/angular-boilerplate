@@ -8,31 +8,22 @@
 }
 
 .box{
-    min-height: max-content;
-    min-width: 30rem;
+    min-height: 19.75rem;
+    min-width: 18.75rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 .mat-form-field{
     display: block;
+    position: relative;
+    top: 2rem;
 }
-
-.separator{
-    display: flex;
-    margin-top: 2rem;
-    justify-content: end;
+.mat-card-header{
+    margin-left: 2rem;
 }
 .mat-button.mat-primary{
     background: #379683;
     color: #EDF5E1;
-}
-
-.text{
-    display: flex;
-    justify-content: center;
-}
-
-.text>span>a{
-    color: #379683;
-    font-weight:500;
+    position: relative;
+    top: 3rem;
+    left: 5rem;
 }

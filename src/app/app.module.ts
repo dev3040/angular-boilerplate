@@ -5,24 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainModule } from './main/main.module';
-import {ToastModule} from 'primeng/toast';
-import { MessageService } from 'primeng/api';
-import { InterceptorDInterceptor } from './interceptors/interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
+import { HttpRequestInterceptor } from './interceptors/http-request.interceptor';
 
-@NgModule({ 
+
+@NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MainModule,
     HttpClientModule,
-    ToastModule
+    BrowserAnimationsModule,
+    ToastModule,
+    MainModule, 
   ],
-  providers: [MessageService,{ provide: HTTP_INTERCEPTORS, useClass: InterceptorDInterceptor, multi: true }],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:HttpRequestInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

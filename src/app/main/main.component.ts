@@ -1,28 +1,30 @@
-import { Component, OnInit ,AfterViewInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth-service/auth.service';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { Store } from '@ngxs/store';
+import { GetUser } from '../store/auth/auth.action';
+import { AuthState } from '../store/auth/auth.state';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  mode = new FormControl('push');
-  constructor(private loginService:AuthService,private router:Router,private _focusMonitor: FocusMonitor) { }
-  ngAfterViewInit() {
-    this._focusMonitor.stopMonitoring(<HTMLElement>document.getElementById('menu'));
-    this._focusMonitor.stopMonitoring(<HTMLElement>document.getElementById('profile_circle'));
-}
+ opened!: boolean;
+ mode = new FormControl('push');
+ login:boolean=true;
+ user$ = this.store.select(AuthState.getUser)
+ userProf:any={}
+  constructor(private router:Router,private store:Store) { }
+  
   ngOnInit(): void {
+    this.user$.subscribe(res=>{
+      this.userProf=res      
+    })
   }
-
-onLogout(){
-  let logout=this.loginService.logout()
-  if(logout){
-    this.router.navigate(['/login'])
-  }
+  logout(){
+    localStorage.clear();
+    this.router.navigate(["/login"])
   }
 }

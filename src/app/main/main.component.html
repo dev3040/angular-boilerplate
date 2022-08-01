@@ -1,45 +1,27 @@
 <div class="navigation-container">
     <mat-toolbar color="primary" class="toolbar">
-        <button mat-icon-button id="menu" (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-        <h1 class="app-name">Responsive App</h1>
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+        <h1 class="app-name">{{userProf?.firstName+" "+userProf?.lastName}}</h1>
         <span class="nav-tool-items">
-          <button mat-button mat-icon-button class="icon" id="profile_circle" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()">
-            <mat-icon>account_circle</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu" [overlapTrigger]="false">
-          <span (mouseleave)="menuTrigger.closeMenu()">
-            <button mat-menu-item>
-              <mat-icon> edit_note </mat-icon>
-              <a routerLink="/profile" >Edit Profile</a>
-        </button>
-        <button mat-menu-item>
-          <mat-icon> edit </mat-icon>
-          <a routerLink="/changepassword">Change Password</a>
-    </button>
-        <button mat-menu-item (click)="onLogout()">
-          <mat-icon> exit_to_app </mat-icon>
-          <span>Logout</span>
-        </button>
+            <span mat-button mat-raised-button  [matMenuTriggerFor]="menu" class="icon" *ngIf="login"><mat-icon>account_circle</mat-icon></span>
         </span>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logout()">Logout</button>
         </mat-menu>
-        </span>
-        <!-- <span class="nav-tool-items">
-            <a mat-button mat-raised-button routerLink="/login" routerLinkActive="active">Sign in</a>
-            <span mat-button mat-raised-button class="icon" *ngIf="login"><mat-icon>account_circle</mat-icon></span>
-          </span> -->
       </mat-toolbar>
     
       <mat-sidenav-container class="sidenav-container">
-        <mat-sidenav #snav [mode]="mode.value" class="sidenav">
+        <mat-sidenav #snav [mode]="mode.value">
           <mat-nav-list class="list">
             <a mat-list-item routerLink="/home">Home</a>
-            <a mat-list-item routerLink="/login">Login</a>
-            <a mat-list-item routerLink="/register">Register</a>
+            <!-- <a mat-list-item routerLink="/login">Login</a>
+            <a mat-list-item routerLink="/register">Register</a> -->
             <a mat-list-item routerLink="/profile">Profile</a>
           </mat-nav-list>
         </mat-sidenav>
-        <mat-sidenav-content>
-            <router-outlet></router-outlet>
-        </mat-sidenav-content>
+        <router-outlet></router-outlet>
       </mat-sidenav-container>
 </div>
+<p-toast></p-toast>
+
+  

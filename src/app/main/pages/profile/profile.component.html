@@ -6,24 +6,31 @@
         <mat-card-content>
           <form class="form" [formGroup]="form">
             <mat-form-field class="form-field" >
-              <mat-label>Name</mat-label>
-              <input type="text" matInput formControlName="name" id="username"/>
-              <mat-error *ngIf="form.controls['name'].hasError('required')" >
+              <mat-label>First Name</mat-label>
+              <input type="text" matInput formControlName="firstName" id="username"/>
+              <mat-error *ngIf="form.controls['firstName'].hasError('required')" >
                 First Name is Required
               </mat-error>
             </mat-form-field>
             <mat-form-field class="form-field" >
+                <mat-label>Last Name</mat-label>
+                <input type="text" matInput formControlName="lastName" id="username"/>
+                <mat-error *ngIf="form.controls['lastName'].hasError('required')" >
+                  Last Name is Required
+                </mat-error>
+              </mat-form-field>
+            <mat-form-field class="form-field" >
                 <mat-label>Mobile No.</mat-label>
-                <input type="telephone" matInput formControlName="phone_no" id="usernum"/>
-                <mat-error *ngIf="form.controls['phone_no'].hasError('required')" >
+                <input type="telephone" matInput formControlName="phoneNumber" id="usernum"/>
+                <mat-error *ngIf="form.controls['phoneNumber'].hasError('required')" >
                     Mobile No. is Required
                 </mat-error>
-                <mat-error *ngIf="form.controls['phone_no'].hasError('pattern')" >
+                <mat-error *ngIf="form.controls['phoneNumber'].hasError('pattern')" >
                     Invalid Mobile number
                 </mat-error>
               </mat-form-field>
             <div class="separator">
-                <button mat-button color="primary" type="submit" (click)="onReset()">Reset</button>
+                <button mat-button color="primary" type="submit" (click)="onReset()">Update</button>
             </div>
         </form>
         </mat-card-content>
