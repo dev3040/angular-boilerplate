@@ -1,0 +1,38 @@
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(55,150,131);
+    background: linear-gradient(90deg, rgba(55,150,131,1) 37%, rgba(92,219,149,1) 76%);
+    height: 100%;
+}
+
+.box{
+    min-height: max-content;
+    min-width: 30rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mat-form-field{
+    display: block;
+}
+
+.separator{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: end;
+}
+.mat-button.mat-primary{
+    background: #379683;
+    color: #EDF5E1;
+}
+
+.text{
+    display: flex;
+    justify-content: center;
+}
+
+.text>span>a{
+    color: #379683;
+    font-weight:500;
+}

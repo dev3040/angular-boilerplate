@@ -1,0 +1,54 @@
+<div class="container main">
+    <mat-card class="box">
+        <mat-card-header>
+          <mat-card-title>Registration</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form class="form" [formGroup]="form">
+            <mat-form-field class="form-field" >
+              <mat-label>Name</mat-label>
+              <input type="text" matInput formControlName="name"/>
+              <mat-error *ngIf="form.controls['name'].hasError('required')" >
+                First Name Is Required
+              </mat-error>
+            </mat-form-field>
+              <mat-form-field class="form-field" >
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com"/>
+                <mat-error *ngIf="form.controls['email'].hasError('required')" >
+                  Email Is Required
+                </mat-error>
+                <mat-error *ngIf="form.controls['email'].touched && form.controls['email'].invalid" >
+                  Please enter a valid email address
+                </mat-error>
+              </mat-form-field>
+            <mat-form-field class="form-field">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password"/>
+                <mat-error *ngIf="form.controls['password'].hasError('required')" >
+                  Password Is Required
+                </mat-error>
+                <mat-error *ngIf="form.controls['password'].hasError('pattern')" >
+                    Minimum eight characters, at least one letter and one number
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-field" >
+                <mat-label>Mobile No.</mat-label>
+                <input type="telephone" matInput formControlName="phone_no"/>
+                <mat-error *ngIf="form.controls['phone_no'].hasError('required')" >
+                    Mobile No. Is Required
+                </mat-error>
+                <mat-error *ngIf="form.controls['phone_no'].hasError('pattern')" >
+                    Invalid Mobile number
+                </mat-error>
+              </mat-form-field>
+            <div class="text">
+                <span>Already an User?<a routerLink="/login"> Sign In</a></span>
+            </div>
+            <div class="separator">
+                <button mat-button color="primary" type="submit" (click)="sendForm()">Submit</button>
+            </div>
+        </form>
+        </mat-card-content>
+      </mat-card>
+</div>
